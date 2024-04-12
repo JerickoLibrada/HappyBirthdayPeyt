@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Load HTML Content</title>
+</head>
+<body>
+
+<a href="content.html" id="loadContent">Load Content</a>
+<div id="contentArea"></div>
+
+<script>
+  document.getElementById('loadContent').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the link from causing a page reload
+    fetch('content.html')   // Fetch the content of the HTML file
+      .then(response => response.text()) // Convert the response to text
+      .then(html => {
+        document.getElementById('contentArea').innerHTML = html; // Display fetched HTML
+      })
+      .catch(error => console.error('Error loading the HTML: ', error));
+  });
+</script>
+
+</body>
+</html>
